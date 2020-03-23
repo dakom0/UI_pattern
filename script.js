@@ -22,8 +22,11 @@ form.addEventListener("submit", function(e) {
     .then(res => res.json())
     .then(res => {
     let desc = document.querySelector("p");
-    //console.log(res.flavor_text_entries[1].flavor_text)
-    desc.innerHTML= res.flavor_text_entries[1].flavor_text;
+    if (res.flavor_text_entries[1].language.name=='en') {
+        desc.innerHTML= res.flavor_text_entries[1].flavor_text;
+    } else {
+        desc.innerHTML= res.flavor_text_entries[2].flavor_text;
+    }
 }) 
 
     //return dexno;
@@ -67,8 +70,11 @@ function getDescl()
     .then(res => res.json())
     .then(res => {
         let desc = document.querySelector("p");
-        console.log(res.flavor_text_entries[1].language.name)
-        desc.innerHTML= res.flavor_text_entries[1].flavor_text;
+        if (res.flavor_text_entries[1].language.name=='en') {
+            desc.innerHTML= res.flavor_text_entries[1].flavor_text;
+        } else {
+            desc.innerHTML= res.flavor_text_entries[2].flavor_text;
+        }
     })
 }
 
